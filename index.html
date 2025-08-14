@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Star Rating</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      background: hsl(252.7, 100%, 65.7%);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .card {
+      max-width: 33rem;
+      background: #fff;
+      margin: 0 1rem;
+      padding: 1rem;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      border-radius: 0.5rem;
+    }
+
+    .star {
+      font-size: 10vh;
+      cursor: pointer;
+    }
+
+    .one {
+      color: rgb(255, 0, 0);
+    }
+
+    .two {
+      color: rgb(255, 106, 0);
+    }
+
+    .three {
+      color: rgb(224, 232, 1);
+    }
+
+    .four {
+      color: yellowgreen;
+    }
+
+    .five {
+      color: rgb(24, 159, 14);
+    }
+
+    h1 {
+      color: #b50088;
+      text-decoration: underline;
+      text-transform: uppercase;
+    }
+
+    #output {
+      font-size: 25px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="card">
+    <h1>Star Rating</h1>
+    <br />
+    <span onclick="rate(1)" class="star"><ion-icon name="star-sharp"></ion-icon>
+    </span>
+    <span onclick="rate(2)" class="star"><ion-icon name="star-sharp"></ion-icon>
+    </span>
+    <span onclick="rate(3)" class="star"><ion-icon name="star-sharp"></ion-icon>
+    </span>
+    <span onclick="rate(4)" class="star"><ion-icon name="star-sharp"></ion-icon>
+    </span>
+    <span onclick="rate(5)" class="star"><ion-icon name="star-sharp"></ion-icon>
+    </span> <br><br><br>
+
+    <h3 id="output">
+      Rating is: 0/5
+    </h3>
+
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    let stars = document.getElementsByClassName("star");
+    let output = document.getElementById("output");
+
+    function rate(n) {
+      deletes();
+      for (let i = 0; i < n; i++) {
+        if (n == 1) {
+          num = "one";
+        }
+        else if (n == 2) {
+          num = "two";
+        }
+        else if (n == 3) {
+          num = "three";
+        }
+        else if (n == 4) {
+          num = "four";
+        }
+        else if (n == 5) {
+          num = "five";
+        }
+        stars[i].className = "star " + num;
+      }
+      output.innerText = "Rating is: " + n + "/5";
+    }
+
+    function deletes() {
+      let i = 0;
+      while (i < 5) {
+        stars[i].className = "star";
+        i++;
+      }
+    }
+
+  </script>
+</body>
+
+</html>
